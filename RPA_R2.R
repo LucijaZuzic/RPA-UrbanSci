@@ -1,0 +1,90 @@
+# Clear environment
+rm(list=ls())
+library(fNonlinear)
+library(nonlinearTseries)
+library(crqa)
+
+## The R script for Filjar et al manuscript prepared for MDPI Urban Science
+
+# Set path to the working directory containing prepared data set
+
+library(tidyverse)
+getCurrentFileLocation <-  function()
+{
+  this_file <- commandArgs() %>% 
+    tibble::enframe(name = NULL) %>%
+    tidyr::separate(col = value, into = c("key", "value"), sep = "=", fill = 'right') %>%
+    dplyr::filter(key == "--file") %>%
+    dplyr::pull(value)
+  if (length(this_file) == 0) {
+    this_file <- rstudioapi::getSourceEditorContext()$path
+  }
+  return(dirname(this_file))
+}
+
+# set parameters for RPA plots (same for all days)
+delay = 1
+embed = 1
+rescale = 1
+radius = 1
+normalize = 0
+mindiagline = 2
+minvertline = 2
+tw = 0
+whiteline = FALSE
+recpt = FALSE
+side = "both"
+checkl = list(do = FALSE, thrshd = 3, datatype = "categorical", pad = TRUE)
+par = list(unit = 2, labelx = "Time", labely = "Time", cols = "red", pcex = 1)
+
+# Sin function
+x <- seq(0, 24 * 31, by = 1/1)
+y =sin(x)
+plot(x,y)
+ts_y <- as.ts(y)
+dataframe_sin <- data.frame(ts_y)
+colnames(dataframe_sin) <- c("sin")
+write.csv(dataframe_sin, "sin_time_series.csv", row.names = FALSE)
+
+# Normal distribution - white noise
+y =rnorm(24 * 31)
+plot(y)
+ts_y <- as.ts(y)
+dataframe_normal <- data.frame(ts_y)
+colnames(dataframe_normal) <- c("normal")
+write.csv(dataframe_normal, "normal_time_series.csv", row.names = FALSE)
+
+# Auto-regressive time sequence
+alpha = -0.99
+# purely random process
+Z <- rnorm(24 * 31, mean = 0, sd = 0.5)
+# seed
+X <- rnorm(1)
+# the process
+for (i in 2:length(Z)) {
+  X[i] <- alpha*X[i-1]+Z[i]
+}
+ts.plot(X)
+ts_y <- as.ts(X)
+dataframe_ar <- data.frame(ts_y)
+colnames(dataframe_ar) <- c("ar")
+write.csv(dataframe_ar, "ar_time_series.csv", row.names = FALSE)
+
+# Brownian motion
+t <- 0:(24 * 31)  # time
+sig2 <- 0.01
+## first, simulate a set of random deviates
+x <- rnorm(n = length(t) - 1, sd = sqrt(sig2))
+## now compute their cumulative sum
+x <- c(0, cumsum(x))
+plot(t, x, type = "l", ylim = c(-2, 2))
+ts_y <- as.ts(x)
+dataframe_brownian <- data.frame(ts_y)
+colnames(dataframe_brownian) <- c("brownian")
+write.csv(dataframe_brownian, "brownian_time_series.csv", row.names = FALSE)
+
+lm<-logisticMap(3.56995, n.sample = 24 * 31)
+ts_y <- as.ts(lm)
+dataframe_logistic <- data.frame(ts_y)
+colnames(dataframe_logistic) <- c("logistic")
+write.csv(dataframe_logistic, "logistic_time_series.csv", row.names = FALSE)
