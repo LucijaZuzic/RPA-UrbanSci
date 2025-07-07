@@ -5,7 +5,7 @@ import cartopy.io.img_tiles as cimgt
 fig = plt.figure(figsize = (16, 16), dpi = 300)
 plt.rcParams.update({'font.size': 22})
 plt.gca().set_aspect('equal') 
-plt.title("Darwin, New Territory, Australia")
+plt.title("Darwin, Northern Territory, Australia")
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
 proj = ccrs.PlateCarree()
@@ -26,7 +26,7 @@ cm = 1/2.54  # centimeters in inches
 plt.figure(figsize=(16, 16), dpi = 300)
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.coastlines()
-plt.title("Darwin, New Territory, Australia")
+plt.title("Darwin, Northern Territory, Australia")
 
 plt.scatter([x], [y], color = "r", zorder = 2, s = 200)
 plt.scatter([x + x1], [y + y1], color = "r", zorder = 2, s = 200, alpha = 0)
