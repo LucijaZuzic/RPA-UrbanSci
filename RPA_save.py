@@ -11,8 +11,7 @@ import numpy as np
 from pyrqa.computation import RPComputation
 
 for month_use in range(1, 13):
-    pdfile = pd.read_csv("darwin_pos_total.csv")
-    pdfile = pdfile[pdfile["m"] == month_use]
+    pdfile = pd.read_csv("darwin_pos_total_" + str(month_use) + ".csv")
     lstTime = list(pdfile["GPST"])
     pdfile["doy"] = [datetime.strptime(lstTime[ix], "%Y-%m-%d %H:%M:%S").timetuple().tm_yday for ix in range(len(lstTime))]
     minDay = min(pdfile["doy"])
