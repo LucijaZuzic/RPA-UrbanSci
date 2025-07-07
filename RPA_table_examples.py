@@ -3,7 +3,7 @@ import numpy as np
 
 metric_dict = dict()
 names_list =  ["sin", "normal", "ar", "brownian", "logistic"]
-translate =  {"sin": "Sine", "normal": "White noise", "ar": "A-R", "brownian": "Brownian", "logistic": "Logistic map"}
+translate =  {"sin": "Sine", "normal": "Normal", "ar": "A-R", "brownian": "Brownian", "logistic": "Logistic"}
 multiply_dict = {"RR": 0, "DET": 0, "NRLINE": 0, "L": 0, "L_entr": 0, "L_rentr": 4, "LAM": 0, "TT": 0}
 rounding_dict = {"RR": 3, "DET": 4, "NRLINE": 0, "L": 3, "L_entr": 3, "L_rentr": 4, "LAM": 4, "TT": 3}
 translate_metr = {"RR": "RR", "DET": "DET", "NRLINE": "NRLINE", "L": "L", "L_entr": "ENTR", "L_rentr": "rENTR", "LAM": "LAM", "TT": "TT"}
