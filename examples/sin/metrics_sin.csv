@@ -1,32 +1,32 @@
 metric,value
-Number of recurrence points,350271.0
-The total number of lines in the recurrent plot (NRLINE),126204.0
-The average length of line structures (L),4.9498827295489845
-Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),1.558072574769866
-Entropy measure normalized by the number of lines observed in the plot (rENTR),1.2345667132340227e-05
-Recurrence rate (RR),0.6310904914193054
-Total number of diagonal lines having a minimum length,40311.0
-Total number of recurrence points that form diagonal lines having a minimum length,274873.0
-Determinism (DET),0.7847438126479211
-Average diagonal line length (L),6.818808761876411
-Longest diagonal line length (L_max),745.0
-Entropy of diagonal lines (L_entr),0.36615559458732605
-Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),9.08326746018025e-06
-Divergence (DIV),0.0013422818791946308
-Average vertical line length (V),4.072764951742284
-Total number of vertical lines having a minimum length,85893.0
-Total number of recurrence points that form vertical lines having a minimum length,349822.0
-Laminarity (LAM),0.9987181353866007
-Trapping time (TT),4.072764951742284
-Longest vertical line length (V_max),745.0
-Entropy of vertical lines (V_entr),1.19191698018254
-Entropy of vertical lines normalized by the number of vertical lines observed in the plot (V_rentr),1.3876765047006625e-05
-Total number of white vertical lines having a minimum length,72434.0
-Total number of white points that form white vertical lines having a minimum length,72434.0
-Average white vertical line length (W),2.6415219372118064
+Number of recurrence points,632047.0
+The total number of lines in the recurrent plot (NRLINE),227622.0
+The average length of line structures (L),4.952280535273392
+Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),1.534535855096218
+Entropy measure normalized by the number of lines observed in the plot (rENTR),6.741597275730017e-06
+Recurrence rate (RR),0.6307847996159685
+Total number of diagonal lines having a minimum length,72371.0
+Total number of recurrence points that form diagonal lines having a minimum length,495861.0
+Determinism (DET),0.7845318465240718
+Average diagonal line length (L),6.851653286537426
+Longest diagonal line length (L_max),1001.0
+Entropy of diagonal lines (L_entr),0.3313962521388059
+Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),4.579130482359038e-06
+Divergence (DIV),0.000999000999000999
+Average vertical line length (V),4.066878796271844
+Total number of vertical lines having a minimum length,155251.0
+Total number of recurrence points that form vertical lines having a minimum length,631387.0
+Laminarity (LAM),0.9989557738585896
+Trapping time (TT),4.066878796271844
+Longest vertical line length (V_max),1001.0
+Entropy of vertical lines (V_entr),1.2031396029574122
+Entropy of vertical lines normalized by the number of vertical lines observed in the plot (V_rentr),7.749641567251819e-06
+Total number of white vertical lines having a minimum length,130726.0
+Total number of white points that form white vertical lines having a minimum length,130726.0
+Average white vertical line length (W),2.640086899316127
 Longest white vertical line length (W_max),4.0
-Entropy of white vertical lines (W_entr),0.775820510996296
-Entropy of white vertical lines normalized by the number of white vertical lines observed in the plot (W_rentr),1.0710723016764171e-05
+Entropy of white vertical lines (W_entr),0.7759741626769026
+Entropy of white vertical lines normalized by the number of white vertical lines observed in the plot (W_rentr),5.935882400416922e-06
 Longest white vertical line length inverse (W_div),0.25
-Ratio determinism / recurrence rate (DET/RR),1.2434727243046455
-Ratio laminarity / determinism (LAM/DET),1.2726677411022547
+Ratio determinism / recurrence rate (DET/RR),1.2437393022179781
+Ratio laminarity / determinism (LAM/DET),1.2733144974095563

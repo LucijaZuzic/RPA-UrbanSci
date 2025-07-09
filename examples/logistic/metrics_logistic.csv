@@ -1,24 +1,24 @@
 metric,value
-Number of recurrence points,553536.0
-The total number of lines in the recurrent plot (NRLINE),2229.0
-The average length of line structures (L),496.6666666666667
-Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),6.6104888916015625
-Entropy measure normalized by the number of lines observed in the plot (rENTR),0.0029656746934058156
+Number of recurrence points,160801.0
+The total number of lines in the recurrent plot (NRLINE),1200.0
+The average length of line structures (L),268.0
+Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),5.991081237792969
+Entropy measure normalized by the number of lines observed in the plot (rENTR),0.004992567698160808
 Recurrence rate (RR),1.0
-Total number of diagonal lines having a minimum length,1485.0
-Total number of recurrence points that form diagonal lines having a minimum length,553534.0
-Determinism (DET),0.9999963868655336
-Average diagonal line length (L),372.75016835016834
-Longest diagonal line length (L_max),744.0
-Entropy of diagonal lines (L_entr),6.6104888916015625
-Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),0.004451507671112164
-Divergence (DIV),0.0013440860215053765
-Average vertical line length (V),744.0
-Total number of vertical lines having a minimum length,744.0
-Total number of recurrence points that form vertical lines having a minimum length,553536.0
+Total number of diagonal lines having a minimum length,799.0
+Total number of recurrence points that form diagonal lines having a minimum length,160799.0
+Determinism (DET),0.9999875622664038
+Average diagonal line length (L),201.25031289111388
+Longest diagonal line length (L_max),401.0
+Entropy of diagonal lines (L_entr),5.991081237792969
+Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),0.007498224327650774
+Divergence (DIV),0.0024937655860349127
+Average vertical line length (V),401.0
+Total number of vertical lines having a minimum length,401.0
+Total number of recurrence points that form vertical lines having a minimum length,160801.0
 Laminarity (LAM),1.0
-Trapping time (TT),744.0
-Longest vertical line length (V_max),744.0
+Trapping time (TT),401.0
+Longest vertical line length (V_max),401.0
 Entropy of vertical lines (V_entr),0.0
 Entropy of vertical lines normalized by the number of vertical lines observed in the plot (V_rentr),0.0
 Total number of white vertical lines having a minimum length,0.0
@@ -28,5 +28,5 @@ Longest white vertical line length (W_max),0.0
 Entropy of white vertical lines (W_entr),0.0
 Entropy of white vertical lines normalized by the number of white vertical lines observed in the plot (W_rentr),
 Longest white vertical line length inverse (W_div),inf
-Ratio determinism / recurrence rate (DET/RR),0.9999963868655336
-Ratio laminarity / determinism (LAM/DET),1.0000036131475212
+Ratio determinism / recurrence rate (DET/RR),0.9999875622664038
+Ratio laminarity / determinism (LAM/DET),1.0000124378882953

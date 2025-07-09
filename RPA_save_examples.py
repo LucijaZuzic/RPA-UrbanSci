@@ -4,10 +4,13 @@ from pyrqa.analysis_type import Classic
 from pyrqa.neighbourhood import FixedRadius
 from pyrqa.metric import EuclideanMetric
 from pyrqa.computation import RQAComputation
-import pandas as pd
-import numpy as np
-from pyrqa.computation import RPComputation
 import os
+import pandas as pd
+from pyrqa.computation import RPComputation
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+
+translate =  {"sin": "Sine", "normal": "White noise", "ar": "Auto-regressive", "brownian": "Brownian motion", "logistic": "Logistic map"}
 
 for name in ["sin", "normal", "ar", "brownian", "logistic"]:
     pdfile = pd.read_csv(name + "_time_series.csv")
@@ -66,4 +69,31 @@ for name in ["sin", "normal", "ar", "brownian", "logistic"]:
     computation = RPComputation.create(settings)
     result_RQA = computation.run()
 
-    np.save("examples/" + name + "/matrix_" + name + ".npy", result_RQA.recurrence_matrix_reverse)
+    matr_dict = result_RQA.recurrence_matrix_reverse.astype("bool")
+    matr_dict = 1 - matr_dict
+    step_size = 3
+    matr_dict = matr_dict[::step_size, ::step_size]
+    
+    ks = [i for i in range(len(data_points))]
+    plt.figure(figsize = (11, 5))
+    plt.subplot(1, 2, 1)
+    plt.plot(ks, data_points, color = "#FF0000")
+    plt.ylabel("Value")
+    plt.xlabel("Time")
+    plt.title("Time series - " + translate[name])
+
+    plt.subplot(1, 2, 2)
+    plt.title("Recurrence plot - " + translate[name])
+
+    cmap1 = LinearSegmentedColormap.from_list("mycmap", ["#FF0000", "#FFFFFF"])
+    plt.imshow(matr_dict, cmap = cmap1)
+    plt.axis("equal")
+    plt.xticks([])
+    plt.yticks([])
+    ax = plt.gca()
+    ax.spines['top'].set_visible(True)
+    ax.spines['right'].set_visible(True)
+    ax.spines['bottom'].set_visible(True)
+    ax.spines['left'].set_visible(True)
+    plt.savefig("examples/" + name + "/examples_" + name + ".png", bbox_inches = "tight")
+    plt.close()
