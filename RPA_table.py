@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-translate_variable = {"horizontal(m)": "horizonal positioning errors [$m$])", "Dst": "$Dst$-indices"}
+translate_variable = {"horizontal(m)": "horizonal positioning errors [$m$]", "Dst": "$Dst$-indices"}
 
 for used_col in translate_variable:
     metric_dict = dict()
