@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-translate_variable = {"horizontal(m)": "horizontal positioning errors [$m$]", "Dst": "$Dst$-indices"}
+translate_variable = {"horizontal(m)": "horizontal positioning errors [$m$]", "Dst": "$Dst$-indices [$nT$]"}
 
 translate =  {"sin": "Sine", "normal": "White noise", "ar": "Auto-regressive", "brownian": "Brownian motion", "logistic": "Logistic map"}
 translate =  {"sin": "Sine", "normal": "Normal", "ar": "AR", "brownian": "Brownian", "logistic": "Logistic"}

@@ -11,7 +11,7 @@ from pyrqa.computation import RPComputation
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
-translate_variable = {"horizontal(m)": "Horizontal positioning errors [$m$]", "Dst": "$Dst$-indices"}
+translate_variable = {"horizontal(m)": "Horizontal positioning errors [$m$]", "Dst": "$Dst$-indices [$nT$]"}
 
 for used_col in translate_variable:
     for month_use in range(1, 13):
