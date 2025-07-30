@@ -3,7 +3,7 @@ import numpy as np
 
 metric_dict = dict()
 names_list =  ["sin", "normal", "ar", "brownian", "logistic"]
-translate =  {"sin": "Sine", "normal": "Normal", "ar": "A-R", "brownian": "Brownian", "logistic": "Logistic"}
+translate =  {"sin": "Sine", "normal": "Normal", "ar": "AR", "brownian": "Brownian", "logistic": "Logistic"}
 multiply_dict = {"RR": 0, "DET": 0, "NRLINE": 0, "L": 0, "L_entr": 0, "L_rentr": 4, "LAM": 0, "TT": 0}
 rounding_dict = {"RR": 3, "DET": 4, "NRLINE": 0, "L": 3, "L_entr": 3, "L_rentr": 4, "LAM": 4, "TT": 3}
 translate_metr = {"RR": "RR", "DET": "DET", "NRLINE": "NRLINE", "L": "L", "L_entr": "ENTR", "L_rentr": "rENTR", "LAM": "LAM", "TT": "TT"}
@@ -17,13 +17,13 @@ for name in names_list:
                 metric_dict[name][metr] = value
                 
 start_table = "\\begin{table}[H]\n"
-start_table += "\\caption{RPA predictors for characteristic classes of recurrence plots.\\label{tab:examples}}\n"
+start_table += "\\caption{RPA results for characteristic classes of recurrence plots.\\label{tab:examples}}\n"
 start_table += "\\begin{tabularx}{\\textwidth}{" + "C" * (1 + len(names_list)) + "}\n\\toprule\n"
 start_table += "\\textbf{Function} & " + (" & ").join(["$\\textbf{" + str(translate[name]) + "}$" for name in names_list])
 start_table += " \\\\\n\\midrule\n"
 for metr in rounding_dict:
     addition = (" ($\\times 10^{-" + str(multiply_dict[metr]) + "}$)") * (multiply_dict[metr] > 0)
-    metr_list = [translate_metr[metr] + addition]
+    metr_list = ["$" + translate_metr[metr] + "$" + addition]
     for name in names_list:
         if rounding_dict[metr]:
             metr_list.append("$" + str(np.round(metric_dict[name][metr] * (10 ** multiply_dict[metr]), rounding_dict[metr])) + "$")

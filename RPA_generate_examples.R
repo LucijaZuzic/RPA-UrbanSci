@@ -21,6 +21,8 @@ getCurrentFileLocation <-  function()
   return(dirname(this_file))
 }
 
+setwd(getCurrentFileLocation())
+
 # set parameters for RPA plots (same for all plots)
 delay = 1
 embed = 1
@@ -95,7 +97,7 @@ logistic.map <- function(r, x, N, M){
 
 library(compiler) ## requires R >= 2.13.0
 logistic.map <- cmpfun(logistic.map) # same function as above
-lm<-logistic.map(3.56995, 0.01, 1000, 400)
+lm <- logistic.map(3.56995, 0.01, 1000, 400)
 ts_y <- as.ts(lm)
 dataframe_logistic <- data.frame(ts_y)
 colnames(dataframe_logistic) <- c("logistic")

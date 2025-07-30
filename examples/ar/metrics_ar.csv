@@ -1,32 +1,32 @@
 metric,value
-Number of recurrence points,194936.0
-The total number of lines in the recurrent plot (NRLINE),49403.0
-The average length of line structures (L),4.9172519887456225
-Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),4.403400421142578
-Entropy measure normalized by the number of lines observed in the plot (rENTR),8.913224745749404e-05
-Recurrence rate (RR),0.194936
-Total number of diagonal lines having a minimum length,36965.0
-Total number of recurrence points that form diagonal lines having a minimum length,179536.0
-Determinism (DET),0.920999712726228
-Average diagonal line length (L),4.856918706884891
+Number of recurrence points,183472.0
+The total number of lines in the recurrent plot (NRLINE),41643.0
+The average length of line structures (L),4.5627116202002735
+Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),3.894136905670166
+Entropy measure normalized by the number of lines observed in the plot (rENTR),9.351240077972686e-05
+Recurrence rate (RR),0.183472
+Total number of diagonal lines having a minimum length,35571.0
+Total number of recurrence points that form diagonal lines having a minimum length,167180.0
+Determinism (DET),0.911201709252638
+Average diagonal line length (L),4.699895982682523
 Longest diagonal line length (L_max),1000.0
-Entropy of diagonal lines (L_entr),2.197734832763672
-Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),5.9454479447143835e-05
+Entropy of diagonal lines (L_entr),2.1488373279571533
+Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),6.04098093378638e-05
 Divergence (DIV),0.001
-Average vertical line length (V),5.096558932304229
-Total number of vertical lines having a minimum length,12438.0
-Total number of recurrence points that form vertical lines having a minimum length,63391.0
-Laminarity (LAM),0.3251887799072516
-Trapping time (TT),5.096558932304229
-Longest vertical line length (V_max),26.0
-Entropy of vertical lines (V_entr),2.2056658267974854
-Entropy of vertical lines normalized by the number of vertical lines observed in the plot (V_rentr),0.0001773328370153952
-Total number of white vertical lines having a minimum length,41214.0
-Total number of white points that form white vertical lines having a minimum length,41214.0
-Average white vertical line length (W),17.026859804920658
-Longest white vertical line length (W_max),570.0
-Entropy of white vertical lines (W_entr),3.166363000869751
-Entropy of white vertical lines normalized by the number of white vertical lines observed in the plot (W_rentr),7.682736450889869e-05
-Longest white vertical line length inverse (W_div),0.0017543859649122807
-Ratio determinism / recurrence rate (DET/RR),4.7246260963917805
-Ratio laminarity / determinism (LAM/DET),0.3530823901613047
+Average vertical line length (V),3.7590579710144927
+Total number of vertical lines having a minimum length,6072.0
+Total number of recurrence points that form vertical lines having a minimum length,22825.0
+Laminarity (LAM),0.12440590389814249
+Trapping time (TT),3.7590579710144927
+Longest vertical line length (V_max),19.0
+Entropy of vertical lines (V_entr),1.7452995777130127
+Entropy of vertical lines normalized by the number of vertical lines observed in the plot (V_rentr),0.000287434054300562
+Total number of white vertical lines having a minimum length,46549.0
+Total number of white points that form white vertical lines having a minimum length,46549.0
+Average white vertical line length (W),14.947431738598036
+Longest white vertical line length (W_max),440.0
+Entropy of white vertical lines (W_entr),2.9737708568573
+Entropy of white vertical lines normalized by the number of white vertical lines observed in the plot (W_rentr),6.388474203220906e-05
+Longest white vertical line length inverse (W_div),0.0022727272727272726
+Ratio determinism / recurrence rate (DET/RR),4.966434710760432
+Ratio laminarity / determinism (LAM/DET),0.1365294891733461

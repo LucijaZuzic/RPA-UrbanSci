@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-translate_variable = {"horizontal(m)": "horizonal positioning errors [$m$]", "Dst": "$Dst$-indices"}
+translate_variable = {"horizontal(m)": "horizontal positioning errors [$m$]", "Dst": "$Dst$-indices"}
 
+number_ranges = 2
 for used_col in translate_variable:
     metric_dict = dict()
     multiply_dict = {"RR": 0, "DET": 0, "NRLINE": 0, "L": 0, "L_entr": 0, "L_rentr": 4, "LAM": 0, "TT": 0}
@@ -17,16 +18,14 @@ for used_col in translate_variable:
             for metr in metric_dict[month_use]:
                 if "(" in metric and metric[:-1].split("(")[1] == metr:
                     metric_dict[month_use][metr] = value
-    for month_range in [range(1, 7), range(7, 13)]:
+    for month_range in [range(1, 13)]:
+        range_size = int(len(month_range) // number_ranges)
         start_month = datetime(year = 2014, day = 1, month = min(month_range)).strftime("%B")
         end_month = datetime(year = 2014, day = 1, month = max(month_range)).strftime("%B")
         start_table = "\\begin{table}[H]\n"
-        start_table += "\\caption{RPA results for the " + translate_variable[used_col] + " in months from "
-        start_table += start_month + " to " + end_month + ". The lowest value in each row is underlined and bold, and the highest value in each row is bold."
-        start_table += "\\label{tab:" + str(min(month_range)) + "-" + str(max(month_range)) + "}}\n"
-        start_table += "\\begin{tabularx}{\\textwidth}{" + "C" * (1 + len(month_range)) + "}\n\\toprule\n"
-        start_table += "\\textbf{Month} & " + (" & ").join(["$\\textbf{" + str(month_use) + "}$" for month_use in month_range])
-        start_table += " \\\\\n\\midrule\n"
+        start_table += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2024$, separated by month. The lowest value for each variable is underlined and bold, and the highest value is bold."
+        start_table += "\\label{tab:" + used_col + "_" + str(min(month_range)) + "-" + str(max(month_range)) + "}}\n"
+        start_table += "\\begin{tabularx}{\\textwidth}{" + "C" * (1 + range_size) + "}\n"
         min_for_metric = {metr: 10 ** 20 for metr in rounding_dict}
         max_for_metric = {metr: -10 ** 20 for metr in rounding_dict}
         for metr in rounding_dict:
@@ -35,22 +34,35 @@ for used_col in translate_variable:
                     min_for_metric[metr] = metric_dict[month_use][metr]
                 if metric_dict[month_use][metr] > max_for_metric[metr]:
                     max_for_metric[metr] = metric_dict[month_use][metr]
-        for metr in rounding_dict:
-            addition = (" ($\\times 10^{-" + str(multiply_dict[metr]) + "}$)") * (multiply_dict[metr] > 0)
-            metr_list = [translate_metr[metr] + addition]
-            for month_use in month_range:
-                is_min = False
-                is_max = False
-                if metric_dict[month_use][metr] == min_for_metric[metr]:
-                    is_min = True
-                if metric_dict[month_use][metr] == max_for_metric[metr]:
-                    is_max = True
-                startval = "\\mathbf{" * is_max + "\\underline{\\mathbf{" * is_min
-                endval = "}" * is_max + "}}" * is_min
-                if rounding_dict[metr]:
-                    metr_list.append("$" + startval + str(np.round(metric_dict[month_use][metr] * (10 ** multiply_dict[metr]), rounding_dict[metr])) + endval + "$")
-                else:
-                    metr_list.append("$" + startval + str(int(metric_dict[month_use][metr] * (10 ** multiply_dict[metr]))) + endval + "$")
-            start_table += (" & ").join(metr_list) + " \\\\\n"
-        start_table += "\\bottomrule\n\\end{tabularx}\n\\end{table}"
+        for range_number in range(number_ranges):       
+            start_table += "\\toprule\n"
+            start_table += "\\textbf{Month} & " + (" & ").join(["$\\textbf{" + str(month_use) + "}$" for month_use in month_range[range_size * range_number:range_size * (range_number + 1)]])
+            start_table += " \\\\\n\\midrule\n"
+            for metr in rounding_dict:
+                addition = (" ($\\times 10^{-" + str(multiply_dict[metr]) + "}$)") * (multiply_dict[metr] > 0)
+                metr_list = ["$" + translate_metr[metr] + "$" + addition]
+                for month_use in month_range[range_size * range_number:range_size * (range_number + 1)]:
+                    is_min = False
+                    is_max = False
+                    if rounding_dict[metr]:
+                        rounded_val = np.round(metric_dict[month_use][metr] * (10 ** multiply_dict[metr]), rounding_dict[metr])
+                        rounded_min = np.round(min_for_metric[metr] * (10 ** multiply_dict[metr]), rounding_dict[metr])
+                        rounded_max = np.round(max_for_metric[metr] * (10 ** multiply_dict[metr]), rounding_dict[metr])
+                    else:
+                        rounded_val = int(metric_dict[month_use][metr] * (10 ** multiply_dict[metr]))
+                        rounded_min = int(min_for_metric[metr] * (10 ** multiply_dict[metr]))
+                        rounded_max = int(max_for_metric[metr] * (10 ** multiply_dict[metr]))
+                    if rounded_val == rounded_min:
+                        is_min = True
+                    if rounded_val == rounded_max:
+                        is_max = True
+                    startval = "\\mathbf{" * is_max + "\\underline{\\mathbf{" * is_min
+                    endval = "}" * is_max + "}}" * is_min
+                    if rounding_dict[metr]:
+                        metr_list.append("$" + startval + str(np.round(metric_dict[month_use][metr] * (10 ** multiply_dict[metr]), rounding_dict[metr])) + endval + "$")
+                    else:
+                        metr_list.append("$" + startval + str(int(metric_dict[month_use][metr] * (10 ** multiply_dict[metr]))) + endval + "$")
+                start_table += (" & ").join(metr_list).replace(".0$", "$").replace(".0}", "}") + " \\\\\n"
+            start_table += "\\bottomrule\n"
+        start_table += "\\end{tabularx}\n\\end{table}"
         print(start_table)

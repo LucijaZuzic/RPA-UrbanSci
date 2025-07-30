@@ -13,7 +13,9 @@ from matplotlib.colors import LinearSegmentedColormap
 
 translate_variable = {"horizontal(m)": "Horizontal positioning errors [$m$]", "Dst": "$Dst$-indices"}
 
+nrows, ncols = 4, 3
 for used_col in translate_variable:
+    plt.figure(figsize = (11, 15))
     for month_use in range(1, 13):
         pdfile = pd.read_csv("data_all_" + str(month_use) + ".csv")
         lstTime = list(pdfile["GPST"])
@@ -96,18 +98,7 @@ for used_col in translate_variable:
         step_size = 3
         matr_dict = matr_dict[::step_size, ::step_size]
         
-        plt.figure(figsize = (11, 5))
-        plt.subplot(1, 2, 1)
-        plt.plot(ks, vs, color = "#FF0000")
-        plt.ylabel(translate_variable[used_col])
-        plt.xlabel("Day of the month")
-        ticks_x = [x for x in range(0, len(ks), 24 * 60 * 2)]
-        labels_x = [str(x // 24 // 60 + 1) for x in range(0, len(ks), 24 * 60 * 2)]
-        plt.xticks(ticks_x, labels_x)
-        plt.title(translate_variable[used_col] + "\nTime series - " + datetime(year = 2014, day = 1, month = month_use).strftime("%B"))
-
-        plt.subplot(1, 2, 2)
-        plt.title(translate_variable[used_col] + "\nRecurrence plot - " + datetime(year = 2014, day = 1, month = month_use).strftime("%B"))
+        plt.subplot(4, 3, month_use)
 
         cmap1 = LinearSegmentedColormap.from_list("mycmap", ["#FF0000", "#FFFFFF"])
         plt.imshow(matr_dict, cmap = cmap1)
@@ -119,5 +110,10 @@ for used_col in translate_variable:
         ax.spines['right'].set_visible(True)
         ax.spines['bottom'].set_visible(True)
         ax.spines['left'].set_visible(True)
-        plt.savefig("month_result_" + used_col + "/" + str(month_use) + "/" + used_col + "_RPA_" + str(month_use) + ".png", bbox_inches = "tight")
-        plt.close()
+        
+        if month_use == int((ncols + ncols % 2) // 2):
+            plt.title(translate_variable[used_col] + "\nRecurrence plot - " + datetime(year = 2014, day = 1, month = month_use).strftime("%B"))
+        else:
+            plt.title("Recurrence plot - " + datetime(year = 2014, day = 1, month = month_use).strftime("%B"))
+    plt.savefig("month_result_all_time_series_" + used_col + "_RPA.png", bbox_inches = "tight")
+    plt.close()
