@@ -23,7 +23,7 @@ for used_col in translate_variable:
         start_month = datetime(year = 2014, day = 1, month = min(month_range)).strftime("%B")
         end_month = datetime(year = 2014, day = 1, month = max(month_range)).strftime("%B")
         start_table = "\\begin{table}[H]\n"
-        start_table += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2024$, separated by month. The lowest value for each variable is underlined and bold, and the highest value is bold."
+        start_table += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2014$, separated by month. The lowest value for each variable is underlined and bold, and the highest value is bold."
         start_table += "\\label{tab:" + used_col + "_" + str(min(month_range)) + "-" + str(max(month_range)) + "}}\n"
         start_table += "\\begin{tabularx}{\\textwidth}{" + "C" * (1 + range_size) + "}\n"
         min_for_metric = {metr: 10 ** 20 for metr in rounding_dict}

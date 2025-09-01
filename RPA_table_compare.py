@@ -43,7 +43,7 @@ for name in names_list:
             start_month = datetime(year = 2014, day = 1, month = min(month_range)).strftime("%B")
             end_month = datetime(year = 2014, day = 1, month = max(month_range)).strftime("%B")
             start_table = "\\begin{table}[H]\n"
-            start_table += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2024$, separated by month, and compared to the " + translate[name] + " function. The lowest value for each variable is underlined and bold, and the highest value is bold."
+            start_table += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2014$, separated by month, and compared to the " + translate[name] + " function. The lowest value for each variable is underlined and bold, and the highest value is bold."
             start_table += "\\label{tab:" + name + "_" + used_col + "_" + str(min(month_range)) + "-" + str(max(month_range)) + "}}\n"
             start_table += "\\begin{tabularx}{\\textwidth}{" + "C" * (1 + range_size) + "}\n"
             min_for_metric = {metr: 10 ** 20 for metr in rounding_dict}
@@ -96,7 +96,7 @@ for metr in ["RR"]:#[total_dict["sin"]["Dst"][1]]:
         addition = (" ($\\times 10^{-" + str(multiply_dict[metr]) + "}$)") * (multiply_dict[metr] > 0)
         metr_list_start = "($|\Delta " + translate_metr[metr] + "|$)" + addition
         start_table_part = "\\begin{table}[H]\n"
-        start_table_part += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2024$, separated by month, and compared to the characteristic classes of recurrence plots by the absolute value of the difference in $" + translate_metr[metr] + "$ " + metr_list_start + ". "
+        start_table_part += "\\caption{RPA results for the " + translate_variable[used_col] + " in $2014$, separated by month, and compared to the characteristic classes of recurrence plots by the absolute value of the difference in $" + translate_metr[metr] + "$ " + metr_list_start + ". "
         start_table_part += "The name and value are listed for the characteristic classes of recurrence plots with the lowest absolute value of the difference in $" + translate_metr[metr] + "$ for each month " + metr_list_start + "."
         start_table_part += "\\label{tab:compare_" + metr + "_" + used_col + "_" + str(min(month_range)) + "-" + str(max(month_range)) + "}}\n"
         start_table_part += "\\begin{tabularx}{\\textwidth}{" + "C" * (1 + range_size_second) + "}\n"
