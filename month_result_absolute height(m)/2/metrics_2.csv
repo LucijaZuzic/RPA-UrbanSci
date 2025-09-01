@@ -1,0 +1,32 @@
+metric,value
+Number of recurrence points,304156854.0
+The total number of lines in the recurrent plot (NRLINE),82017548.0
+The average length of line structures (L),6.938937981906019
+Shannon entropy: Shannon information entropy of line lengths longer than the minimum length (ENTR),5.268537218789309
+Entropy measure normalized by the number of lines observed in the plot (rENTR),6.423670723232678e-08
+Recurrence rate (RR),0.1870925847190728
+Total number of diagonal lines having a minimum length,48313217.0
+Total number of recurrence points that form diagonal lines having a minimum length,279988628.0
+Determinism (DET),0.9205402946467878
+Average diagonal line length (L),5.795280409499537
+Longest diagonal line length (L_max),40320.0
+Entropy of diagonal lines (L_entr),2.4210895992820833
+Entropy of diagonal lines normalized by the number of diagonal lines observed in the plot (L_rentr),5.011236571727532e-08
+Divergence (DIV),2.48015873015873e-05
+Average vertical line length (V),8.578305589272786
+Total number of vertical lines having a minimum length,33704331.0
+Total number of recurrence points that form vertical lines having a minimum length,289126051.0
+Laminarity (LAM),0.9505820572433985
+Trapping time (TT),8.578305500263452
+Longest vertical line length (V_max),276.0
+Entropy of vertical lines (V_entr),2.847447619507225
+Entropy of vertical lines normalized by the number of vertical lines observed in the plot (V_rentr),8.448313718219848e-08
+Total number of white vertical lines having a minimum length,35001782.0
+Total number of white points that form white vertical lines having a minimum length,35001782.0
+Average white vertical line length (W),37.36350292107985
+Longest white vertical line length (W_max),35333.0
+Entropy of white vertical lines (W_entr),3.9035741193633897
+Entropy of white vertical lines normalized by the number of white vertical lines observed in the plot (W_rentr),1.115250109083986e-07
+Longest white vertical line length inverse (W_div),2.8302153793903717e-05
+Ratio determinism / recurrence rate (DET/RR),4.9202393351346165
+Ratio laminarity / determinism (LAM/DET),1.0326349240454897
