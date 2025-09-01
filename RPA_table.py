@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-translate_variable = {"horizontal(m)": "horizontal positioning errors [$m$]", "Dst": "$Dst$-indices [$nT$]"}
+translate_variable = {"horizontal(m)": "horizontal positioning errors [$m$]", "height(m)": "vertical positioning errors [$m$]", "Dst": "$Dst$-indices [$nT$]"}
 
 number_ranges = 2
 for used_col in translate_variable:
