@@ -34,7 +34,7 @@ for used_col in translate_variable:
                     min_for_metric[metr] = metric_dict[month_use][metr]
                 if metric_dict[month_use][metr] > max_for_metric[metr]:
                     max_for_metric[metr] = metric_dict[month_use][metr]
-        for range_number in range(number_ranges):       
+        for range_number in range(number_ranges):
             start_table += "\\toprule\n"
             start_table += "\\textbf{Month} & " + (" & ").join(["$\\textbf{" + str(month_use) + "}$" for month_use in month_range[range_size * range_number:range_size * (range_number + 1)]])
             start_table += " \\\\\n\\midrule\n"
