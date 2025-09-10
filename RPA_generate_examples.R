@@ -3,7 +3,7 @@ rm(list=ls())
 library(fNonlinear)
 library(crqa)
 
-## The R script for Filjar et al manuscript prepared for MDPI Urban Science
+## The R script for Zuzic et al manuscript prepared for MDPI Urban Science
 
 # Set path to the working directory containing prepared data set
 
@@ -22,21 +22,6 @@ getCurrentFileLocation <-  function()
 }
 
 setwd(getCurrentFileLocation())
-
-# set parameters for RPA plots (same for all plots)
-delay = 1
-embed = 1
-rescale = 1
-radius = 1
-normalize = 0
-mindiagline = 2
-minvertline = 2
-tw = 0
-whiteline = FALSE
-recpt = FALSE
-side = "both"
-checkl = list(do = FALSE, thrshd = 3, datatype = "categorical", pad = TRUE)
-par = list(unit = 2, labelx = "Time", labely = "Time", cols = "red", pcex = 1)
 
 # Sin function
 x <- seq(-500, 500, by = 1/1)
@@ -89,7 +74,7 @@ logistic.map <- function(r, x, N, M){
   z <- 1:N
   z[1] <- x
   for(i in c(1:(N-1))){
-    z[i+1] <- r *z[i]  * (1 - z[i])
+    z[i+1] <- r * z[i]  * (1 - z[i])
   }
   ## Return the last M iterations 
   z[c((N-M):N)]
