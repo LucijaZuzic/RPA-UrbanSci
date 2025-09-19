@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 translate_variable = {"horizontal(m)": "Horizontal positioning errors [$m$]", "absolute height(m)": "Vertical positioning errors [$m$]", "TEC": "Total Electron Content [$TECU$]", "Dst": "$Dst$-indices [$nT$]"}
 
 nrows, ncols = 4, 3
-plt.figure(figsize = (11, 15))
+plt.figure(figsize = (11, 15), dpi = 600)
 for month_use in range(1, 13):
     plt.subplot(nrows, ncols, month_use)
     compare_var = dict()

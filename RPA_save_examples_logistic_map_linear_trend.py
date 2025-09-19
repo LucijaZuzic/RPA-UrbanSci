@@ -75,7 +75,7 @@ for name in ["logistic_linear"]:
     matr_dict = matr_dict[::step_size, ::step_size]
     
     ks = [i for i in range(len(data_points))]
-    plt.figure(figsize = (11, 5))
+    plt.figure(figsize = (11, 5), dpi = 600)
     plt.subplot(1, 2, 1)
     plt.plot(ks, data_points, color = "#FF0000")
     plt.ylabel("Value")
@@ -95,5 +95,8 @@ for name in ["logistic_linear"]:
     ax.spines['right'].set_visible(True)
     ax.spines['bottom'].set_visible(True)
     ax.spines['left'].set_visible(True)
+    plt.savefig("examples/" + name + "/examples_" + name + ".eps", bbox_inches = "tight")
     plt.savefig("examples/" + name + "/examples_" + name + ".png", bbox_inches = "tight")
+    plt.savefig("examples/" + name + "/examples_" + name + ".svg", bbox_inches = "tight")
+    plt.savefig("examples/" + name + "/examples_" + name + ".pdf", bbox_inches = "tight")
     plt.close()

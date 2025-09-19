@@ -96,7 +96,7 @@ for used_col in translate_variable:
         step_size = 3
         matr_dict = matr_dict[::step_size, ::step_size]
         
-        plt.figure(figsize = (11, 5))
+        plt.figure(figsize = (11, 5), dpi = 600)
         plt.subplot(1, 2, 1)
         plt.plot(ks, vs, color = "#FF0000")
         plt.ylabel(translate_variable[used_col])
@@ -119,5 +119,8 @@ for used_col in translate_variable:
         ax.spines['right'].set_visible(True)
         ax.spines['bottom'].set_visible(True)
         ax.spines['left'].set_visible(True)
+        plt.savefig("month_result_" + used_col + "/" + str(month_use) + "/" + used_col + "_RPA_" + str(month_use) + ".eps", bbox_inches = "tight")
         plt.savefig("month_result_" + used_col + "/" + str(month_use) + "/" + used_col + "_RPA_" + str(month_use) + ".png", bbox_inches = "tight")
+        plt.savefig("month_result_" + used_col + "/" + str(month_use) + "/" + used_col + "_RPA_" + str(month_use) + ".svg", bbox_inches = "tight")
+        plt.savefig("month_result_" + used_col + "/" + str(month_use) + "/" + used_col + "_RPA_" + str(month_use) + ".pdf", bbox_inches = "tight")
         plt.close()

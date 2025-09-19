@@ -15,7 +15,7 @@ translate_variable = {"horizontal(m)": "Horizontal positioning errors [$m$]", "a
 
 nrows, ncols = 4, 3
 for used_col in translate_variable:
-    plt.figure(figsize = (11, 15))
+    plt.figure(figsize = (11, 15), dpi = 600)
     for month_use in range(1, 13):
         pdfile = pd.read_csv("data_all_" + str(month_use) + ".csv")
         lstTime = list(pdfile["GPST"])
@@ -115,5 +115,8 @@ for used_col in translate_variable:
             plt.title(translate_variable[used_col] + "\nRecurrence plot - " + datetime(year = 2014, day = 1, month = month_use).strftime("%B"))
         else:
             plt.title("Recurrence plot - " + datetime(year = 2014, day = 1, month = month_use).strftime("%B"))
+    plt.savefig("month_result_all_time_series_" + used_col + "_RPA.eps", bbox_inches = "tight")
     plt.savefig("month_result_all_time_series_" + used_col + "_RPA.png", bbox_inches = "tight")
+    plt.savefig("month_result_all_time_series_" + used_col + "_RPA.svg", bbox_inches = "tight")
+    plt.savefig("month_result_all_time_series_" + used_col + "_RPA.pdf", bbox_inches = "tight")
     plt.close()
