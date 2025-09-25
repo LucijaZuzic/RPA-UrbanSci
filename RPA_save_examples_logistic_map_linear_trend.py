@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
 translate =  {"logistic_linear": "Logistic map with a linear trend"}
+sampling_interval =  {"logistic_linear": 1}
+maximum_length =  {"logistic_linear": 1}
 
 for name in ["logistic_linear"]:
     pdfile = pd.read_csv(name + "_time_series.csv")
@@ -71,13 +73,13 @@ for name in ["logistic_linear"]:
 
     matr_dict = result_RQA.recurrence_matrix_reverse.astype("bool")
     matr_dict = 1 - matr_dict
-    step_size = 3
-    matr_dict = matr_dict[::step_size, ::step_size]
+    step_size = sampling_interval[name]
+    matr_dict = matr_dict[:int(len(matr_dict) * maximum_length[name]):step_size, :int(len(matr_dict) * maximum_length[name]):step_size]
     
     ks = [i for i in range(len(data_points))]
     plt.figure(figsize = (11, 5), dpi = 600)
     plt.subplot(1, 2, 1)
-    plt.plot(ks, data_points, color = "#FF0000")
+    plt.plot(ks[:int(len(data_points) * maximum_length[name])], data_points[:int(len(data_points) * maximum_length[name])], color = "#FF0000")
     plt.ylabel("Value")
     plt.xlabel("Time")
     plt.title("Time series - " + translate[name])

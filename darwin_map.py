@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 from matplotlib.transforms import offset_copy
 import numpy as np
 import cartopy.crs as ccrs
-import cartopy.io.img_tiles as cimgt
 from cartopy.io.img_tiles import GoogleTiles
+import cartopy.geodesic as cgeo
 
 class ShadedReliefESRI(GoogleTiles):
     # shaded relief
@@ -28,7 +28,6 @@ plt.ylabel("Latitude")
 
 # Add a marker for the Darwin, Northern Territory, Australia station.
 ax.plot(x, y, marker = "^", color = "red", markersize = 12, alpha = 0.7, transform = ccrs.Geodetic(), label = "The position of the IGS reference station")
-plt.legend(loc = "lower left", bbox_to_anchor = (0, -0.05))
 
 # Use the cartopy interface to create a matplotlib transform object
 # for the Geodetic coordinate system. We will use this along with
@@ -71,7 +70,31 @@ for angle in angle_and_marker_list:
     xt, yt = xs + np.cos(angle_radians) * rl2, ys + np.sin(angle_radians) * rl2
     plt.annotate("", xy = (xs, ys), xytext = (xs + xa, ys + ya), xycoords = text_transform, arrowprops = dict(arrowstyle = "<-"))
     ax.text(xt, yt, angle_and_marker_list[angle], verticalalignment = "center", horizontalalignment = "center", transform = text_transform)
-    
+
+geodesic = cgeo.Geodesic()
+dx = geodesic.inverse((x, y), (x + 1, y))[0][0]
+x_unit, y_unit = 112, -33
+unit_distance_in_km = 250
+number_of_ticks = 6
+x_offset = unit_distance_in_km * 1000 / dx
+for i in range(number_of_ticks):
+    if i % 2:
+        use_color = "black"
+    else:
+        use_color = "white"
+    if i == 1:
+        label_text = "The scale valid at the latitude of the IGS reference station"
+    else:
+        label_text = ""
+    if label_text:
+        ax.plot([x_unit + i * x_offset, x_unit + (i + 1) * x_offset], [y_unit, y_unit], transform = ccrs.Geodetic(), color = use_color, linewidth = 10, label = label_text)
+    else:
+        ax.plot([x_unit + i * x_offset, x_unit + (i + 1) * x_offset], [y_unit, y_unit], transform = ccrs.Geodetic(), color = use_color, linewidth = 10)
+    ax.text(x_unit + i * x_offset + 1, y_unit - 1, str(unit_distance_in_km * i), verticalalignment = "center", horizontalalignment = "center", transform = text_transform, bbox = dict(facecolor = "white", alpha = 1, boxstyle = "square"))
+ax.text(x_unit + number_of_ticks * x_offset + 1, y_unit - 1, str(unit_distance_in_km * number_of_ticks) + " km", verticalalignment = "center", horizontalalignment = "center", transform = text_transform, bbox = dict(facecolor = "white", alpha = 1, boxstyle = "square"))
+
+plt.legend(loc = "lower left", bbox_to_anchor = (0, -0.075))
+
 ax.text(x, y - y1 - rl2, "Longitude", horizontalalignment = "center", transform = text_transform)
 ax.text(x - x1 - rl1, y, "Latitude", verticalalignment = "center", rotation = "vertical", transform = text_transform)
 
